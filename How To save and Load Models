@@ -1,0 +1,19 @@
+import pickle
+
+#
+# Create your model here (same as above)
+#
+
+# Save to file in the current working directory
+pkl_filename = "local_model2_heartdisease_87acc.pkl"
+with open(pkl_filename, 'wb') as file:
+    pickle.dump(classifier, file)
+
+# Load from file
+with open(pkl_filename, 'rb') as file:
+    pickle_model = pickle.load(file)
+    
+# Calculate the accuracy score and predict target values
+score = pickle_model.score(X_test, y_test)
+print("Test score: {0:.2f} %".format(100 * score))
+Ypredict = pickle_model.predict(X_test)
